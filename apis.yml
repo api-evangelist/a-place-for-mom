@@ -1,8 +1,31 @@
 aid: a-place-for-mom
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/a-place-for-mom.png
 name: A Place for Mom
-description: A Place for Mom is a company surfaced as a portfolio company of battery-ventures, insight-partners
-  and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the
-  enrichment pipeline.
+description: >-
+  A Place for Mom is North America's largest senior living referral service,
+  connecting families with assisted living, memory care, independent living,
+  home care, and other senior care options through a network of Senior Living
+  Advisors and a large marketplace of care communities. Families use the service
+  at no cost to search, compare, and get matched to providers, while care
+  communities and home care agencies partner with A Place for Mom to receive
+  and manage referral leads, respond to and moderate consumer reviews, and track
+  billing and performance through provider-facing portals. A Place for Mom was
+  surfaced as a portfolio company of Battery Ventures and Insight Partners and
+  added to the API Evangelist network for enrichment. The company operates
+  consumer-facing web properties plus provider, community-partner, reputation,
+  and home care portals, and publishes a support knowledge base (including an
+  llms.txt documentation index) rather than a public developer API program.
 url: https://raw.githubusercontent.com/api-evangelist/a-place-for-mom/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -16,6 +39,13 @@ created: '2026-07-17'
 modified: '2026-07-17'
 tags:
 - Company
+- Senior Living
+- Senior Care
+- Referral Marketplace
+- Home Care
+- Healthcare
+- Reviews
+- Lead Generation
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -25,3 +55,24 @@ maintainers:
 common:
 - type: Website
   url: https://www.aplaceformom.com/
+- type: About
+  url: https://www.aplaceformom.com/about
+- type: Support
+  url: https://support.aplaceformom.com
+- type: HelpCenter
+  url: https://support.aplaceformom.com/docs/for-care-providers
+- type: TermsOfService
+  url: https://www.aplaceformom.com/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.aplaceformom.com/privacy
+- type: GitHubOrganization
+  url: https://github.com/aplaceformom
+- type: LLMsTxt
+  url: llms/a-place-for-mom-llms.txt
+- type: DomainSecurity
+  url: security/a-place-for-mom-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
