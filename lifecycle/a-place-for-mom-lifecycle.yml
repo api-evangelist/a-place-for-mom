@@ -1,0 +1,42 @@
+generated: '2026-08-10'
+method: probed
+source: live probes of aplaceformom.com and youvegotleads.com plus a search of the public support surfaces
+note: >-
+  A documented absence. A Place for Mom operates a real API surface (see apis[] — the
+  You've Got Leads API host) but publishes no versioning policy, no deprecation policy,
+  no SLA, and no working status page. Recorded so the gap is countable; NO StatusPage
+  and NO Deprecation pointer is emitted, because neither surface exists.
+versioning:
+  scheme: null
+  current: null
+  docs: null
+  note: No version identifier appears in any public API path, header, or document.
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: No deprecation or sunset policy published.
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  finding: dangling-cname
+  detail: >-
+    status.aplaceformom.com resolves (104.192.142.22, Atlassian Statuspage) but is NOT a
+    working status page. TLS fails with a hostname mismatch, and following the redirect
+    lands on the Atlassian Statuspage MARKETING page
+    (https://www.atlassian.com/software/statuspage) — the signature of an unclaimed or
+    decommissioned Statuspage subdomain. This is an unresolved DNS pointer at a
+    third-party SaaS: worth the provider's attention as a subdomain-takeover exposure,
+    not just a missing status page.
+    blog.aplaceformom.com resolves to the production ALB but fails to complete a
+    connection over both HTTP and HTTPS — a second stale DNS record.
+deprecated_operations: []
+x-evidence:
+  fetched: '2026-08-10'
+  probes:
+  - {url: 'https://status.aplaceformom.com/', http_status: 0, note: 'TLS hostname mismatch (curl exit 60)'}
+  - {url: 'https://status.aplaceformom.com/', http_status: 200, note: 'with -k, redirects to https://www.atlassian.com/software/statuspage'}
+  - {url: 'https://status.aplaceformom.com/api/v2/summary.json', http_status: 0, note: 'no Statuspage API — not a provisioned page'}
+  - {url: 'https://blog.aplaceformom.com/', http_status: 0, note: 'connection fails over http and https'}
+  - {url: 'https://communities.aplaceformom.com/', http_status: 503}

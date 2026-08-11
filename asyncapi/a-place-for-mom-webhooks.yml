@@ -1,0 +1,56 @@
+generated: '2026-08-10'
+method: searched
+source: https://www.youvegotleads.com/ygl-Integrations
+spec_type: none
+note: >-
+  A Place for Mom publishes no AsyncAPI document. It does, however, publicly advertise
+  a webhook surface — on the integrations page of You've Got Leads, the senior-living
+  CRM that is a division of A Place for Mom, Inc. The page states, verbatim:
+  "In addition with You've Got Leads Webhooks, you can have YGL send your server a
+  message when certain events occur on leads." No event catalog, payload schema,
+  delivery/retry semantics, signature scheme, or subscription API is published — the
+  page routes the reader to a contact form instead. This artifact records the
+  advertised surface and exactly how far the public documentation goes; it does NOT
+  model events the provider has not published.
+webhooks:
+  advertised: true
+  documented_catalog: false
+  docs: https://www.youvegotleads.com/ygl-Integrations
+  product: You've Got Leads (division of A Place for Mom, Inc.)
+  direction: outbound
+  subject: lead events
+  described_as: "YGL send your server a message when certain events occur on leads"
+  events: []            # provider publishes no event list — deliberately empty, not unknown
+  payload_schema: null
+  signature_scheme: null
+  retry_policy: null
+  subscription_api: null
+  access: >-
+    Not self-serve. The integrations page ends with "Are you ready to have your systems
+    integrated? Contact us now." linking to mailto:support@youvegotleads.com.
+related_integration_surface:
+  note: >-
+    The same page advertises the "YGL application programming interface (API)" for
+    web-to-lead population, plus prebuilt referral-network connectors. Captured here
+    because it is the same publicly documented integration page.
+  named_connectors:
+  - {partner: A Place for Mom, url: 'https://www.aplaceformom.com/', kind: referral-network,
+     note: 'built-in API connection to auto-populate referrals into a YGL account'}
+  - {partner: Caring.com, url: 'http://www.caring.com', kind: referral-network}
+  - {partner: Family Assets, kind: referral-network}
+  - {partner: Medtelligent (ALIS), url: 'http://www.medtelligent.com/about-us/', kind: care-plan-software}
+  - {partner: Senior Insight, url: 'http://www.seniorinsight.com/', kind: care-plan-software}
+  - {partner: Zapier, url: 'http://www.zapier.com', kind: ipaas,
+     note: 'no public Zapier app listing found — zapier.com/apps/youve-got-leads/integrations returned 404 on 2026-08-10'}
+  - {partner: SiteStaff, url: 'http://www.sitestaff.com', kind: live-chat}
+  - {partner: G5 Intelligent Marketing Cloud, url: 'https://www.getg5.com/', kind: marketing}
+x-evidence:
+  fetched: '2026-08-10'
+  probes:
+  - {url: 'https://www.youvegotleads.com/ygl-Integrations', http_status: 200,
+     found: 'YGL API + YGL Webhooks + integration partner list'}
+  - {url: 'https://ygl.zendesk.com/hc/en-us/articles/360016234652-YGL-s-Web-Application-Integrations',
+     http_status: 200, found: '"YGL Web Services" partner integration article — no spec, routes to support@youvegotleads.com'}
+  - {url: 'https://ygl.zendesk.com/api/v2/help_center/articles/search.json?query=API', http_status: 200,
+     found: '0 results — the public help center contains no API reference'}
+  - {url: 'https://zapier.com/apps/youve-got-leads/integrations', http_status: 404}

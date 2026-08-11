@@ -1,0 +1,38 @@
+generated: '2026-08-10'
+method: searched
+source: registry searches across npm, PyPI, RubyGems, crates.io, NuGet, Packagist and the aplaceformom GitHub organization
+package_count: 0
+official_package_count: 0
+note: >-
+  A Place for Mom publishes no first-party client library on any public package
+  registry, and no SDK is offered for the You've Got Leads API. NO Packages and NO
+  SDKs pointer is emitted — a client-library pointer would assert a distribution
+  channel that does not exist. The company's public GitHub organization
+  (github.com/aplaceformom, 16 public repos) is infrastructure and CI tooling —
+  Terraform modules, GitHub Actions, forks of Amundsen and spline-spark-agent, and
+  a desktop-app release channel — not API clients.
+packages: []
+registries_checked:
+- {registry: npm, query: aplaceformom, results: 0, scope_probe: 'https://registry.npmjs.org/-/org/aplaceformom/package', scope_status: 404}
+- {registry: pypi, query: aplaceformom, status: 404}
+- {registry: rubygems, query: aplaceformom, results: 0}
+- {registry: nuget, query: aplaceformom, results: 0}
+- {registry: packagist, query: aplaceformom, results: 0}
+- {registry: crates.io, query: aplaceformom, results: 0}
+github_org:
+  url: https://github.com/aplaceformom
+  name: A Place For Mom Inc
+  public_repos: 16
+  api_client_repos: 0
+  note: >-
+    One repo, aplaceformom/adp, contains OpenAPI and Postman files — but they are
+    ADP's specs (workers, payroll, time entry, job applicants), mirrored for internal
+    HR integration work. They are NOT A Place for Mom's API and were deliberately not
+    harvested into openapi/. aplaceformom/actions-apollo-service-checks indicates an
+    internal Apollo GraphQL federation, but no schema or endpoint is public.
+x-evidence:
+  fetched: '2026-08-10'
+  probes:
+  - {url: 'https://registry.npmjs.org/-/v1/search?text=aplaceformom&size=20', http_status: 200, results: 0}
+  - {url: 'https://pypi.org/pypi/aplaceformom/json', http_status: 404}
+  - {url: 'https://api.github.com/orgs/aplaceformom/repos?per_page=100', http_status: 200, results: 16}

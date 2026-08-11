@@ -1,0 +1,28 @@
+generated: '2026-08-10'
+method: searched
+source: https://www.aplaceformom.com/about
+plan_count: 0
+note: >-
+  A Place for Mom publishes no plans, tiers, or prices for any API or developer
+  surface — there is nothing to record, and NO Plans/Pricing pointer is emitted.
+  The consumer side of the business is free to families by design (the referral
+  service is paid for by the partner communities), so there is no consumer price
+  list. The commercial side — a community/home-care partnership, and a You've Got
+  Leads CRM subscription — is quoted through a sales conversation: the You've Got
+  Leads site's only pricing affordances are "Schedule a Demo" and a
+  mailto:yglsales@aplaceformom.com "Sign Up" link. No published rate card, no
+  per-lead price, no CRM seat price.
+plans: []
+commercial_model:
+  consumer_side: free-to-families
+  provider_side: referral-fee (amount not published)
+  ygl_crm: subscription, price quoted via sales
+  self_serve_signup: false
+x-evidence:
+  fetched: '2026-08-10'
+  probes:
+  - {url: 'https://www.youvegotleads.com/schedule-a-demo', http_status: 200, note: 'demo request stands in for pricing'}
+  - {url: 'https://www.aplaceformom.com/about', http_status: 200}
+  - {url: 'https://www.aplaceformom.com/partner', http_status: 404}
+  - {url: 'https://www.aplaceformom.com/partners', http_status: 404}
+  - {url: 'https://www.aplaceformom.com/senior-living-professionals', http_status: 404}

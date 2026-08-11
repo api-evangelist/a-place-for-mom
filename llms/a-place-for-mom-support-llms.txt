@@ -1,0 +1,14 @@
+# aplaceformom-com Support
+
+> Knowledge base documentation for aplaceformom-com Support.
+
+## v1
+
+- [For Communities](https://support.aplaceformom.com/docs/for-care-providers.md)
+- [Getting Started](https://support.aplaceformom.com/docs/getting-started.md)
+- [Reviews](https://support.aplaceformom.com/docs/reviews.md)
+- [How to generate aplaceformom.com reviews](https://support.aplaceformom.com/docs/review-cards.md)
+- [Review moderation and publishing process](https://support.aplaceformom.com/docs/review-process.md)
+- [Reviews - Insights](https://support.aplaceformom.com/docs/reviews-insights.md)
+- [A Place for Mom review policy](https://support.aplaceformom.com/docs/review-policy.md)
+- [Review Score FAQ](https://support.aplaceformom.com/docs/review-score.md)

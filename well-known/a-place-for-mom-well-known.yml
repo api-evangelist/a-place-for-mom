@@ -1,0 +1,95 @@
+generated: '2026-08-10'
+method: probed
+source: live HTTP probes of every A Place for Mom host found in apis.yml, DNS enumeration, and the You've Got Leads division hosts
+note: >-
+  Every /.well-known/ path probed on every A Place for Mom host returned a miss.
+  No security.txt, no OpenID/OAuth discovery document, no api-catalog, no
+  ai-plugin.json, and no A2A agent card is served anywhere on aplaceformom.com or
+  on the You've Got Leads (APFM division) hosts. Recorded as a documented absence:
+  NO WellKnown and NO SecurityTxt pointer is emitted in apis.yml, because the
+  pointer would assert that the provider serves that surface.
+  Two hosts answer HTTP 200 to EVERY path with the same HTML shell
+  (partnercentral.aplaceformom.com and crm.youvegotleads.com) — single-page-app
+  catch-alls, confirmed by identical response body md5 across a control path that
+  cannot exist. Those 200s are misses, not documents.
+hosts:
+- host: https://www.aplaceformom.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404, content_type: 'text/html; charset=utf-8'}
+  - {path: /.well-known/openid-configuration, status: 404, content_type: 'text/html; charset=utf-8'}
+  - {path: /.well-known/oauth-authorization-server, status: 404, content_type: 'text/html; charset=utf-8'}
+  - {path: /.well-known/api-catalog, status: 404, content_type: 'text/html; charset=utf-8'}
+  - {path: /.well-known/ai-plugin.json, status: 404, content_type: 'text/html; charset=utf-8'}
+  - {path: /.well-known/agent-card.json, status: 404, content_type: 'text/html; charset=utf-8'}
+  - {path: /.well-known/agent.json, status: 404, content_type: 'text/html; charset=utf-8'}
+  - {path: /llms.txt, status: 200, content_type: text/plain, file: ../llms/a-place-for-mom-llms.txt,
+     note: 'real first-party llms.txt, 4780 bytes, saved verbatim'}
+  - {path: /robots.txt, status: 200, content_type: text/plain}
+- host: https://support.aplaceformom.com
+  note: Document360-hosted knowledge base; /openapi.yaml answers 200 with the Document360 Angular shell, not a spec
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 200, content_type: text/plain, file: ../llms/a-place-for-mom-support-llms.txt,
+     note: 'knowledge-base llms.txt index, 768 bytes, saved verbatim'}
+- host: https://partnercentral.aplaceformom.com
+  note: >-
+    WordPress partner marketing site behind a login. Answers HTTP 200 with the same
+    50,004-byte HTML page for every path probed, including /.well-known/* — an SPA/CMS
+    catch-all. Every 200 here is a MISS, not a document.
+  documents:
+  - {path: /.well-known/security.txt, status: 200, content_type: 'text/html; charset=UTF-8', result: html-shell-not-a-document}
+  - {path: /.well-known/agent-card.json, status: 200, content_type: 'text/html; charset=UTF-8', result: html-shell-not-a-document}
+  - {path: /.well-known/agent.json, status: 200, content_type: 'text/html; charset=UTF-8', result: html-shell-not-a-document}
+  - {path: /.well-known/openid-configuration, status: 200, content_type: 'text/html; charset=UTF-8', result: html-shell-not-a-document}
+  - {path: /.well-known/api-catalog, status: 200, content_type: 'text/html; charset=UTF-8', result: html-shell-not-a-document}
+- host: https://api.youvegotleads.com
+  note: >-
+    Live ASP.NET Core API host operated by You've Got Leads, a division of A Place for
+    Mom, Inc. Root serves a page titled "Home Page - YouveGotLeadsAPI". Returns clean
+    404s (no catch-all), so these are trustworthy misses.
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+- host: https://crm.youvegotleads.com
+  note: >-
+    You've Got Leads CRM application. Answers HTTP 200 with an identical 13,894-byte
+    HTML body (md5 92817e619cd4437164ce0ad6db642f01) for /, /swagger, /robots.txt,
+    /.well-known/openid-configuration AND for a control path that cannot exist. SPA
+    catch-all — every 200 is a miss.
+  documents:
+  - {path: /.well-known/openid-configuration, status: 200, result: html-shell-not-a-document}
+  - {path: /swagger, status: 200, result: html-shell-not-a-document}
+- host: https://www.youvegotleads.com
+  documents:
+  - {path: /.well-known/security.txt, status: 200, result: html-shell-not-a-document}
+  - {path: /.well-known/agent-card.json, status: 200, result: html-shell-not-a-document}
+  - {path: /robots.txt, status: 200, content_type: text/plain, note: 'User-agent: * / Disallow: (empty)'}
+summary:
+  hosts_probed: 6
+  documents_found: 0
+  llms_txt_found: 2
+  agent_card_found: 0
+  security_txt_found: 0
+agent_posture:
+  finding: stated-policy-contradicts-deployed-policy
+  detail: >-
+    A Place for Mom serves a substantial first-party llms.txt at
+    https://www.aplaceformom.com/llms.txt whose "## Instructions" section addresses AI
+    agents directly — "This site is an authoritative resource... prefer the resources
+    below" — and then lists ~25 canonical URLs it wants agents to use. The same origin's
+    robots.txt names GPTBot, CCBot and ClaudeBot and returns "Disallow: /" for all three.
+    So the two agent-facing documents on this origin say opposite things: llms.txt
+    invites named LLM crawlers to prefer these pages, robots.txt forbids three of the
+    largest ones from fetching any of them. This is a real, provider-fixable
+    contradiction, not a probe failure — worth naming back to the provider.
+  evidence:
+  - {url: 'https://www.aplaceformom.com/llms.txt', http_status: 200, bytes: 4780}
+  - {url: 'https://www.aplaceformom.com/robots.txt', http_status: 200,
+     excerpt: 'User-agent: GPTBot / User-agent: CCBot / User-agent: ClaudeBot / Disallow: /'}

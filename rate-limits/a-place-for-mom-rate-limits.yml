@@ -1,0 +1,22 @@
+generated: '2026-08-10'
+method: searched
+source: https://www.youvegotleads.com/ygl-Integrations
+limit_count: 0
+note: >-
+  No rate limits are published for any A Place for Mom API surface. The You've Got
+  Leads integrations page names an API and webhooks but documents no quota, no
+  window, no burst allowance, no exhaustion status code, and no response headers.
+  The public help center returns zero results for "API". Nothing could be observed
+  on a live response either — every API path is behind an authentication redirect,
+  so there was no unauthenticated 200 to read headers from. Honest zero; NO
+  RateLimits pointer is emitted, because emitting one would credit the provider
+  with a runtime signal an agent cannot actually read.
+limits: []
+response_headers: []
+exhaustion_status: null
+x-evidence:
+  fetched: '2026-08-10'
+  probes:
+  - {url: 'https://www.youvegotleads.com/api', http_status: 302, note: 'redirects to /?ReturnUrl=%2fapi — auth wall, no headers to observe'}
+  - {url: 'https://api.youvegotleads.com/', http_status: 200, note: 'API host home page; no RateLimit-*/X-RateLimit-*/Retry-After headers present'}
+  - {url: 'https://ygl.zendesk.com/api/v2/help_center/articles/search.json?query=API', http_status: 200, note: '0 articles'}
