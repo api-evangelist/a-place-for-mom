@@ -68,6 +68,12 @@ apis:
   - Leads
   - Referrals
   - Senior Living
+  - Webhook
+  tags_raw:
+  - CRM
+  - Leads
+  - Referrals
+  - Senior Living
   - Webhooks
   properties:
   - type: Integrations
