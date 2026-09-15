@@ -23,20 +23,16 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/a-place-for-mom.png
 name: A Place for Mom
-description: >-
-  A Place for Mom is North America's largest senior living referral service,
-  connecting families with assisted living, memory care, independent living,
-  home care, and other senior care options through a network of Senior Living
-  Advisors and a large marketplace of care communities. Families use the service
-  at no cost to search, compare, and get matched to providers, while care
-  communities and home care agencies partner with A Place for Mom to receive
-  and manage referral leads, respond to and moderate consumer reviews, and track
-  billing and performance through provider-facing portals. A Place for Mom was
-  surfaced as a portfolio company of Battery Ventures and Insight Partners and
-  added to the API Evangelist network for enrichment. The company operates
-  consumer-facing web properties plus provider, community-partner, reputation,
-  and home care portals, and publishes a support knowledge base (including an
-  llms.txt documentation index) rather than a public developer API program.
+description: A Place for Mom is North America's largest senior living referral service, connecting families
+  with assisted living, memory care, independent living, home care, and other senior care options through
+  a network of Senior Living Advisors and a large marketplace of care communities. Families use the service
+  at no cost to search, compare, and get matched to providers, while care communities and home care agencies
+  partner with A Place for Mom to receive and manage referral leads, respond to and moderate consumer
+  reviews, and track billing and performance through provider-facing portals. A Place for Mom was surfaced
+  as a portfolio company of Battery Ventures and Insight Partners and added to the API Evangelist network
+  for enrichment. The company operates consumer-facing web properties plus provider, community-partner,
+  reputation, and home care portals, and publishes a support knowledge base (including an llms.txt documentation
+  index) rather than a public developer API program.
 url: https://raw.githubusercontent.com/api-evangelist/a-place-for-mom/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -58,20 +54,16 @@ tags:
 - Reviews
 - Lead Generation
 apis:
-- aid: a-place-for-mom-youve-got-leads-api
+- aid: a-place-for-mom:a-place-for-mom-youve-got-leads-api
   name: You've Got Leads API
-  description: >-
-    The integration surface of You've Got Leads, the senior-living CRM that is a
-    division of A Place for Mom, Inc. The public integrations page names an
-    "application programming interface (API)" used for web-to-lead population from a
-    partner's own inquiry forms, a webhook channel that posts to a partner's server
-    when events occur on leads, and prebuilt referral-network connectors that
-    auto-populate A Place for Mom and Caring.com referrals into a YGL account. A live
-    API host answers at api.youvegotleads.com — an ASP.NET Core application whose root
-    page is titled "Home Page - YouveGotLeadsAPI" — but no OpenAPI, no reference, no
-    authentication guide and no rate limits are published anywhere. Access is arranged
-    by contacting support; the API is real and first-party, and its contract is not
-    public.
+  description: The integration surface of You've Got Leads, the senior-living CRM that is a division of
+    A Place for Mom, Inc. The public integrations page names an "application programming interface (API)"
+    used for web-to-lead population from a partner's own inquiry forms, a webhook channel that posts to
+    a partner's server when events occur on leads, and prebuilt referral-network connectors that auto-populate
+    A Place for Mom and Caring.com referrals into a YGL account. A live API host answers at api.youvegotleads.com
+    — an ASP.NET Core application whose root page is titled "Home Page - YouveGotLeadsAPI" — but no OpenAPI,
+    no reference, no authentication guide and no rate limits are published anywhere. Access is arranged
+    by contacting support; the API is real and first-party, and its contract is not public.
   humanURL: https://www.youvegotleads.com/ygl-Integrations
   baseURL: https://api.youvegotleads.com
   tags:
@@ -97,16 +89,23 @@ apis:
     url: https://crm.youvegotleads.com
   x-evidence:
     fetched: '2026-08-10'
-    ownership: >-
-      youvegotleads.com states "You've Got Leads is a division of A Place for Mom, Inc.
-      (APFM)" and carries "Copyright (c) 2026, A Place For Mom, Inc." plus a
-      yglsales@aplaceformom.com contact — first-party, verified 2026-08-10.
+    ownership: youvegotleads.com states "You've Got Leads is a division of A Place for Mom, Inc. (APFM)"
+      and carries "Copyright (c) 2026, A Place For Mom, Inc." plus a yglsales@aplaceformom.com contact
+      — first-party, verified 2026-08-10.
     probes:
-    - {url: 'https://api.youvegotleads.com/', http_status: 200, note: 'title "Home Page - YouveGotLeadsAPI"; ASP.NET Core; links to crm.youvegotleads.com'}
-    - {url: 'https://api.youvegotleads.com/openapi.json', http_status: 404}
-    - {url: 'https://api.youvegotleads.com/swagger/v1/swagger.json', http_status: 404}
-    - {url: 'https://www.youvegotleads.com/api', http_status: 302, note: 'Location: /?ReturnUrl=%2fapi — authentication wall'}
-    - {url: 'https://www.youvegotleads.com/ygl-Integrations', http_status: 200, note: 'names the YGL API, YGL Webhooks and the connector list'}
+    - url: https://api.youvegotleads.com/
+      http_status: 200
+      note: title "Home Page - YouveGotLeadsAPI"; ASP.NET Core; links to crm.youvegotleads.com
+    - url: https://api.youvegotleads.com/openapi.json
+      http_status: 404
+    - url: https://api.youvegotleads.com/swagger/v1/swagger.json
+      http_status: 404
+    - url: https://www.youvegotleads.com/api
+      http_status: 302
+      note: 'Location: /?ReturnUrl=%2fapi — authentication wall'
+    - url: https://www.youvegotleads.com/ygl-Integrations
+      http_status: 200
+      note: names the YGL API, YGL Webhooks and the connector list
     spec_published: false
     access: contact-required
 maintainers:
@@ -154,13 +153,10 @@ x-enrichment:
 x-coverage:
   state: gated
   reason: sales-gate
-  detail: >-
-    A Place for Mom does operate an API — its You've Got Leads division advertises an
-    API and webhooks on a public page and runs a live host at api.youvegotleads.com —
-    but every route to the contract ends at a person: youvegotleads.com/api 302s to a
-    login, the integrations page closes with "Contact us now" to
-    support@youvegotleads.com, and the public help center returns zero articles for
-    "API".
+  detail: 'A Place for Mom does operate an API — its You''ve Got Leads division advertises an API and
+    webhooks on a public page and runs a live host at api.youvegotleads.com — but every route to the contract
+    ends at a person: youvegotleads.com/api 302s to a login, the integrations page closes with "Contact
+    us now" to support@youvegotleads.com, and the public help center returns zero articles for "API".'
   evidence:
   - url: https://www.youvegotleads.com/api
     status: 302
